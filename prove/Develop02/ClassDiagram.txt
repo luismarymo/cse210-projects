@@ -1,0 +1,26 @@
+Class: PromptRandomizer
+Attributes:
+    _prompts : List<string>
+Behaviors
+    ChoosePrompt() : string
+
+Class: Entry
+Attributes:
+    _date : string
+    _entryText : string
+    _prompt : string
+    _emotion : string 
+Behaviors:
+    Display() : void
+
+Class: Journal
+Attributes:
+    _entries : List<Entry>
+    _filename : string
+Behaviors:
+    NewEntry() : void
+    Display() : void
+    EmotionCounter() : void
+    GetFilename() : string
+    Load() : void
+    Save() : void
