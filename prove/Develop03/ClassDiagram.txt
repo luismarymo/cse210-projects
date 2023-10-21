@@ -1,0 +1,49 @@
+- Class Scripture
+Attributes:
+    _reference : Reference
+    _words : List<Word>
+    _indexes : List<int>
+    _scripture : string
+Behaviors:
+    SplitScripture() : void
+    DisplayText() : void
+    IsFullyHidden() : boolean
+    HideWords() : void
+Constructors:
+    Scripture(Reference reference, string scripture) 
+
+- Class Word
+Attributes:
+    _word : string
+    _isHidden : boolean
+Behaviors:
+    Hide() : void
+    Show() : string
+Constuctors:
+    Word(string word)
+
+- Class Reference
+Attributes:
+    _chapter : string
+    _startVerse : int
+    _endVerse : int
+Behaviors:
+    GetReference() : string
+Constructors:
+    Reference(string chapter, int startVerse)
+    Reference(string chapter, int startVerse, int endVerse)
+
+- Class ScriptureRandomizer
+Attributes:
+    _chosenChapter : string
+    _chosenStart : int
+    _chosenEnd : int
+    _chosenScripture : string
+    _scriptures : List<string>
+Behaviors:
+    ChooseScripture() : void
+    GetChapter() : string
+    GetStartVerse() : int
+    GetEndVerse() : int
+    GetScripture() : string
+
