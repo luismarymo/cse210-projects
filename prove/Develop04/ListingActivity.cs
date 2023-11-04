@@ -2,6 +2,7 @@ public class ListingActivity : Activity
 {
     private Randomizer randomizer = new Randomizer();
 
+    //list of prompts
     private List<string> _prompts = new List<string>()
     {
         "Who are people that you appreciate?",
@@ -11,10 +12,12 @@ public class ListingActivity : Activity
         "Who are some of your personal heroes?"
     };
     
+    //counter for the amount of items listed
     private int _itemsListed = 0;
 
     public ListingActivity()
     {
+        //sets base class attributes
         _name = "Listing";
         _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     }
@@ -36,9 +39,10 @@ public class ListingActivity : Activity
 
         double accumulator = 0.0;
 
+        //allow the user to input as long as the time accumulated doesnt go over the set _time
         while (accumulator <= (_time * 1000))
         {
-            accumulator += this.deltaTime();
+            accumulator += this.DeltaTime();
 
             if (!Console.KeyAvailable)
             {
@@ -46,28 +50,16 @@ public class ListingActivity : Activity
             }
             
             ConsoleKeyInfo key = Console.ReadKey();
-            // Console.WriteLine("");
 
             if (key.Key == ConsoleKey.Enter)
             {
-                // Console.WriteLine("> ");
                 Console.WriteLine("");
-                _itemsListed++;
+                _itemsListed++; //add to counter
             }
         }
 
-        // DateTime startTime = DateTime.Now;
-        // DateTime endTime = startTime.AddSeconds(_time);
-
-        // while (DateTime.Now < endTime)
-        // {
-        //     Console.Write("> ");
-        //     Console.ReadLine();
-
-        //     _itemListed++;
-        // }
-
-        Console.WriteLine($"You listed {_itemsListed} items! ");
+        //display the amount of items listed
+        Console.WriteLine($"You listed {_itemsListed} items!");
     
         EndPause();
         DisplayEndMessage();
@@ -75,7 +67,7 @@ public class ListingActivity : Activity
 
     private void DisplayPrompt()
     {
-        //format
+        //displays a random prompt from _prompts
         Console.WriteLine($" --- {randomizer.GetRandom(_prompts)} ---");
     }
 }

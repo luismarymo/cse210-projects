@@ -1,0 +1,55 @@
+- Class Activity
+Attributes:
+    _name : string
+    _description : string
+    _time : int
+    _animationSymbols : List<string>
+    _lastFrame : double
+Behaviors:
+    DeltaTime() : double
+    DisplayStartMessage() : void
+    SetTime() : void
+    AnimatedPause(int seconds) : void
+    Countdown(int seconds) : void
+    StartPause() : void
+    EndPause() : void
+    DisplayEndMessage() : void
+Constructors:
+    Activity()
+
+- Class BreathingActivity : Activity
+Attributes:
+    (no attributes)
+Behaviors:
+    RunActivity() : void
+Constructors:
+    BreathingActivity()
+
+- Class ReflectionActivity : Activity
+Attributes:
+    _prompts : List<string>
+    _questions : List<string>
+Behaviors:
+    RunActivity() : void
+    DisplayPrompt() : void
+    DisplayQuestion() : void
+Constructors:
+    ReflectionActivity()
+
+- Class ListingActivity : Activity
+Attributes:
+    _prompts : List<string>
+    _itemsListed : int
+Behaviors:
+    RunActivity() : void
+    DisplayPrompt() : void
+Constructors:
+    ListingActivity()
+
+- Class Randomizer
+Attributes:
+    (no attributes)
+Behaviors:
+    GetRandom(List<string> strings) : string
+Constructors:
+    Randomizer()

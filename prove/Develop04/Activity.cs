@@ -7,28 +7,30 @@ public class Activity
     protected string _description;
     protected int _time;
 
+    //list with symbols for the animations
     private List<string> _animationSymbols = new List<string>()
     {
         "|", "/", "-", "\\", "|", "/", "-", "\\"
     };
 
     protected Stopwatch sw = new Stopwatch();
-    private double lastFrame;
+    private double _lastFrame;
 
-    protected double deltaTime()
+    protected double DeltaTime()
     {
         TimeSpan timeSpan = this.sw.Elapsed;
         double firstFrame = timeSpan.TotalMilliseconds;
 
-        double deltaTime = firstFrame - lastFrame;
+        double deltaTime = firstFrame - _lastFrame;
 
-        this.lastFrame = timeSpan.TotalMilliseconds;
+        this._lastFrame = timeSpan.TotalMilliseconds;
 
         return deltaTime;
     }
 
     public void DisplayStartMessage()
     {
+        //standard start message for all activities
         Console.Clear();
         Console.WriteLine($"Welcome to the {_name} Activity.\n");
         Console.WriteLine($"{_description}\n");
@@ -36,6 +38,7 @@ public class Activity
 
     public void SetTime()
     {
+        //sets _time with user input
         while (true)
         {
             try
@@ -43,11 +46,12 @@ public class Activity
                 Console.Write("How long, in seconds, would you like for your session? ");
                 _time = int.Parse(Console.ReadLine());
                 Console.Clear();
-                break;
+                break; //user entered valid input, so the loop can end
             }
 
             catch (FormatException)
             {
+                //user did not enter a number
                 Console.WriteLine("Please enter a valid number.\n");
             }
         }
@@ -55,6 +59,7 @@ public class Activity
 
     protected void AnimatedPause(int seconds)
     {
+        //shows a spinning animation for the given duration
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(seconds);
 
@@ -80,6 +85,7 @@ public class Activity
 
     protected void Countdown(int seconds)
     {
+        //counts down from the given seconds
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
@@ -89,20 +95,22 @@ public class Activity
     }    
 
     public void StartPause()
-    {
+    {   
+        //begining pause for all activities
         Console.WriteLine("Get ready...");
         AnimatedPause(6);        
     }
 
     public void EndPause()
     {
-        //pausing
+        //ending pause for all activities
         Console.WriteLine("\nWell done!");
         AnimatedPause(4);
     }
 
     public void DisplayEndMessage()
-    {
+    {   
+        //standard ending message for all activities
         Console.WriteLine($"You have completed another {_time} seconds of the {_name} Activity.");
         AnimatedPause(6);
         Console.Clear();

@@ -6,6 +6,7 @@ public class Randomizer
 
     public string GetRandom(List<string> strings)
     {
+        //returns a random string from a given list
         int i = random.Next(strings.Count);
         return strings[i];
     }

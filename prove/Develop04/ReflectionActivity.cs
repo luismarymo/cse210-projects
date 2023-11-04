@@ -2,6 +2,7 @@ public class ReflectionActivity : Activity
 {
     private Randomizer randomizer = new Randomizer();
 
+    //list of prompts
     private List<string> _prompts = new List<string>()
     {
         "stood up for someone else",
@@ -10,6 +11,7 @@ public class ReflectionActivity : Activity
         "did something truly selfless"
     };
 
+    //list of questions
     private List<string> _questions = new List<string>()
     {
         "Why was this experience meaningful to you?",
@@ -25,6 +27,7 @@ public class ReflectionActivity : Activity
 
     public ReflectionActivity()
     {
+        //sets base class attributes
         _name = "Reflection";
         _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
@@ -43,19 +46,13 @@ public class ReflectionActivity : Activity
         Console.Write("You may begin in: ");
         Countdown(5);
 
-        // for (int i = 5; i > 0; i--)
-        // {
-        //     Console.Write(i);
-        //     Thread.Sleep(1000);
-        //     Console.Write("\b \b");
-        // }
-
         Console.Clear();
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_time);
 
-        while (DateTime.Now < endTime) // FIX TIME. IT PROBABLY GOES OVER
+        //display questions as long as the current time does not exceed the endTime
+        while (DateTime.Now < endTime)
         {
             DisplayQuestion();
         }
@@ -64,28 +61,16 @@ public class ReflectionActivity : Activity
         DisplayEndMessage();
     }
 
-    // private string GetPrompt()
-    // {
-    //     int i = random.Next(_prompts.Count);
-    //     return _prompts[i];
-    // }
-
-    // private string GetQuestion()
-    // {
-    //     int i = random.Next(_questions.Count);
-    //     return _questions[i];
-    // }
-
     private void DisplayPrompt()
     {
-        //format
+        //displays a random prompt from _prompts
         Console.WriteLine("Consider the following prompt:\n");
         Console.WriteLine($" --- Think of a time when you {randomizer.GetRandom(_prompts)}. ---\n");
     }
 
     private void DisplayQuestion()
     {
-        //formatted string with thingy. this would be called as many times as there is time in the main method.
+        //displays a random question from _questions
         Console.Write($"> {randomizer.GetRandom(_questions)} ");
         AnimatedPause(10);
     }
