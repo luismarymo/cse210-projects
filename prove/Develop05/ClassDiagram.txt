@@ -1,0 +1,61 @@
+- Class Goal
+Attributes:
+    # _name : string
+    # _description : string
+    # _value : int
+Behaviors:
+    + GetName() : string
+    + RecordEvent() : int
+    + IsComplete() : bool
+    + GetGoal() : string 
+    + SaveGoal() : string
+Constructors:
+    + Goal(string name, string description, int value)
+
+- Class SimpleGoal : Goal
+Attributes:
+    - isComplete : bool
+Behaviors:
+    + RecordEvent() : int
+    + IsComplete() : bool
+    + GetGoal() : string
+    + SaveGoal() : string
+Constructors:
+    + SimpleGoal(string name, string description, int value, bool _isComplete)
+    + SimpleGoal(string name, string description, int value)
+
+- Class EternalGoal : Goal
+Attributes:
+    (no attributes)
+Behaviors:
+    + RecordEvent() : int
+    + IsComplete() : bool
+    + GetGoal() : string
+    + SaveGoal() : string
+Constructors:
+    + EternalGoal(string name, string description, int value)
+
+- Class ChecklistGoal : Goal
+Attributes:
+    - _checks : int
+    - _checked : int
+    - _totalValue : int
+Behaviors:
+    + RecordEvent() : int
+    + IsComplete() : bool
+    + GetGoal() : string
+    + SaveGoal() : string
+Constructors:
+    + ChecklistGoal(string name, string description, int value, int checks, int checkedd, int totalValue)
+    + ChecklistGoal(string name, string description, int value, int checks, int totalValue)
+
+Class GoalsViewer
+Attributes:
+    - _goals : List<Goal>
+    - _score : int
+Behaviors:
+    + Menu() : void
+    - SaveToFile(string filename) : void
+    - LoadFromFile(string filename) : void
+Constructors:
+    + GoalsViewer()
