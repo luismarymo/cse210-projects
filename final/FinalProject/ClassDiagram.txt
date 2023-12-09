@@ -1,0 +1,88 @@
+- Class Cat
+Attributes: 
+    # _name : string
+    # _description : string 
+    # _dateAdopted : string
+    # _owner : Player
+Behaviors:
+    + GetInfo() : string
+    + SetName() : void
+    + SetDate() : void
+    + GetDescription() : string
+    + CanAdopt() : bool
+Constructors:
+    + Cat(Player owner)
+
+- Class OrangeCat : Cat
+Attributes:
+    (no attributes)
+Behaviors:
+    + CanAdopt() : bool
+Constructors:
+    + OrangeCat(Player owner)
+
+- Class CalicoCat : Cat
+Attributes:
+    (no attributes)
+Behaviors:
+    + CanAdopt() : bool
+Constructors:
+    + CalicoCat(Player owner)
+
+- Class FeralCat : Cat
+Attributes:
+    - _attempts : int
+Behaviors:
+    + GetInfo() : string
+    + CanAdopt() : bool
+Constructors:
+    + FeralCat(Player owner)
+
+- Class BlackCat : Cat 
+Attributes:
+    - _magicLvl : int
+Behaviors:
+    + GetInfo() : string
+    + CanAdopt() : bool
+Constructors:
+    + BlackCat(Player owner)
+
+Class Player
+Attributes: 
+    - _name : string
+    - _level : int
+    - _location : string
+    - _cats : List<Cat>
+    - _inventory : List<string>
+Behaviors:
+    + GetLevel() : int
+    + ModifyLevel(int number) : void
+    + SetLocation() : void
+    + GetLocation() : string
+    + GetInventory() : List<string>
+    + AdoptCat(Cat cat) : void
+    + AddInventoryItem(string item) : void
+    + GetInfo() : void
+Constructors:
+    + Player(string name)
+
+Class Game
+Attributes:
+    - _player : Player
+    - _libraryCats : List<string>
+    - _parkCats : List<string>
+    - _storeCats : List<string>
+    - _libraryItems : List<string>
+    - _storeItems : List<string>
+Behaviors:
+    + Run() : void
+    - SpawnCat(List<string> possibleCats) : void
+Constructors:
+    Game(Player player)
+
+Class Randomizer
+Attributes:
+    (no attributes)
+Behaviors:
+    GetRandom(List<string> strings) : string
+

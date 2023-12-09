@@ -1,23 +1,19 @@
 public class BlackCat : Cat
 {
-    Randomizer randomizer = new Randomizer();
-    private int _magicLvl;
+    Random random = new Random();
 
-    private List<string> _possibleLvls = new List<string>{"1", "2", "3"};
+    private int _magicLvl;
 
     public BlackCat(Player owner) : base(owner)
     {
-        _magicLvl = int.Parse(randomizer.GetRandom(_possibleLvls));
-        _description = "\nAdoption:";
-    }
-
-    public override string GetInfo()
-    {
-        return $"Name: {_name}\nMagic Level: {_magicLvl}\n{_description}\n{_dateAdopted}";
+        //randomize the magic level when creating the instance
+        _magicLvl = random.Next(1,4);
+        _description = $"The black cat is mysterious and mystical. Not evil like the old tales want you to believe, they are a great companion to those who appreciate the occult.\nAdoption: Black cats have only one requirement; be as knowledgeable as them in the dark arts!\nThis cat's magic level: {_magicLvl}\n";
     }
 
     public override bool CanAdopt()
     {
+        //if user is above certain level, always return true
         if (_owner.GetLevel() >= 3)
         {
             return true;
@@ -26,16 +22,20 @@ public class BlackCat : Cat
         else
         {
             int counter = 0;
-            for (int i = 0; i < _magicLvl; i++)
+
+            //check the player's inventory to match specific string and add 1 to the counter when they do
+            foreach (string item in _owner.GetInventory())
             {
-                if (_owner.FindItem("Dark Arts Book"))
+                if (item == "Dark Arts Book")
                 {
                     counter++;
                 }
             }
 
-            if (counter == _magicLvl)
+            //compare the counter to the magic level and return true if they are the same
+            if (counter >= _magicLvl)
             {
+                _owner.ModifyLevel(1);
                 return true;
             }
 

@@ -2,7 +2,7 @@ public class CalicoCat : Cat
 {
     public CalicoCat(Player owner) : base(owner)
     {
-        _description = "The calico cat is truly the friendliest of them all, they love cuddles and pets. With their easy going personality, anyone can be their friend!\nAdoption: Calico cats love people! They'd love an owner, except those that live in the library; they already have a family!";
+        _description = "The calico cat is truly the friendliest of them all, they love cuddles and pets. With their easy going personality, anyone can be their friend!\nAdoption: Calico cats love people! They'd love an owner, except those that live in the library; they already have a family!\n";
     }
 
     public override bool CanAdopt()
@@ -11,6 +11,8 @@ public class CalicoCat : Cat
         {
             return true;
         }
+
+        //user is in the library therefore they cannot adopt   
         else
         {
             return false;

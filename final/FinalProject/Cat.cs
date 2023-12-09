@@ -1,10 +1,11 @@
 public abstract class Cat
 {
-    //attributes for name, description and date adopted
+    DateTime currentTime = DateTime.Now;
+
+    //attributes for name, description, date adopted and possible owner
     protected string _name;
     protected string _description;
     protected string _dateAdopted;
-
     protected Player _owner;
 
     public Cat(Player owner)
@@ -17,6 +18,13 @@ public abstract class Cat
         //prompts the user for a name
         Console.Write("Enter the name of your cat: ");
         _name = Console.ReadLine();
+
+        Console.WriteLine("");
+    }
+
+    public void SetDate()
+    {
+        _dateAdopted = currentTime.ToString("dd/MM/yyyy hh:mm tt");
     }
 
     public string GetDescription()
@@ -26,7 +34,8 @@ public abstract class Cat
 
     public virtual string GetInfo()
     {
-        return $"Name: {_name}\n{_description}\n{_dateAdopted}";
+        //returns cat information. to be overriden for cats with extra information
+        return $"Name: {_name}\n{_description}Date Adopted: {_dateAdopted}\n";
     }
 
     public abstract bool CanAdopt();
